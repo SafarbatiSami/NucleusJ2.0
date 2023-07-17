@@ -31,7 +31,7 @@ jobs:
           settings-path: ${{ github.workspace }} # location for the settings.xml file
           
       - name : compile
-        run: mvn  -f ../pom.xml  versions:set -DnewVersion=$VERSION
+        run: mvn  -f ~/pom.xml  versions:set -DnewVersion=$VERSION
              mvn clean package         
       - name: target
         uses: actions/upload-artifact@v3
