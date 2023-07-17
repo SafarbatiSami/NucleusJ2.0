@@ -10,7 +10,7 @@ variables:
 
 
 jobs:
-  compile:
+compile:
     name : compile
     runs-on : ubuntu-latest
     
