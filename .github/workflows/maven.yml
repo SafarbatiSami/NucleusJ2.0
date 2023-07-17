@@ -32,8 +32,6 @@ jobs:
           
       - name : compile
         run: ls
-             mvn versions:set -DnewVersion=$VERSION
-             mvn clean package    
                   
       - name: target
         uses: actions/upload-artifact@v3
