@@ -63,9 +63,7 @@ jobs:
    steps :
       - name: release
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && !startsWith(github.ref, 'refs/tags/')}}
-        run : mvn release-cli create --description "new release" --tag-name "v$VERSION" --ref $CI_COMMIT_SHA --assets-links-name ".jar" --assets-links-url "https://gitlab.com/api/v4/projects/19044962/packages/maven/burp/NucleusJ_2/$VERSION/NucleusJ_2-$VERSION.jar"
-
-
+        run : gh release create "v$VERSION" "https://gitlab.com/api/v4/projects/19044962/packages/maven/burp/NucleusJ_2/$VERSION/NucleusJ_2-$VERSION.jar"
         
     
 
