@@ -1,0 +1,14 @@
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd} %d{HH:mm:ss.SSS}] [%-5p] [%-27.27logger{0}] %m%n</pattern>
+		</encoder>
+	</appender>
+	<root level="warn">
+		<appender-ref ref="STDOUT" />
+	</root>
+	<logger name="gred.nucleus.autocrop.AutocropTestRunner" level="debug" />
+	<logger name="gred.nucleus.autocrop.AutocropTestChecker" level="debug" />
+	<logger name="gred.nucleus.segmentation.SegmentationTestRunner" level="debug" />
+	<logger name="gred.nucleus.segmentation.SegmentationTestChecker" level="debug" />
+</configuration>
