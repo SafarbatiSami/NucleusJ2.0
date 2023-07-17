@@ -31,7 +31,8 @@ jobs:
           settings-path: ${{ github.workspace }} # location for the settings.xml file
           
       - name : compile
-        run: ls
+        run: cd ..
+             ls
                   
       - name: target
         uses: actions/upload-artifact@v3
