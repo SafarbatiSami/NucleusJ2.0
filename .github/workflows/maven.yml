@@ -31,7 +31,7 @@ jobs:
           settings-path: ${{ github.workspace }} # location for the settings.xml file
           
       - name : compile
-        run: cd ..
+        run: cd .. ;
              ls
                   
       - name: target
