@@ -31,7 +31,7 @@ jobs:
           settings-path: ${{ github.workspace }} # location for the settings.xml file
           
       - name : compile
-        run: mvn cd NucleusJ2.0/
+        run: ls
              mvn versions:set -DnewVersion=$VERSION
              mvn clean package    
                   
