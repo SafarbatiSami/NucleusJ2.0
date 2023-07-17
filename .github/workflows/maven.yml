@@ -3,7 +3,7 @@ name: Maven CI/CD
 on: [ push, pull_request ]
 
 jobs:
-  compile:
+  package:
     runs-on : ubuntu-latest
     steps :
       - name: Checkout
@@ -17,6 +17,12 @@ jobs:
           distribution: 'adopt'
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ secrets.CACHE_VERSION }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2-${{ secrets.CACHE_VERSION }}
       - name: Append 'SNAPSHOT' to version if 'push' happened on 'main'
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         run: |
@@ -37,6 +43,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           path: target
-      - name: deploy
+      - name: Deploy
         if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' ||  startsWith(github.ref, 'refs/tags/')) }}
         run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
